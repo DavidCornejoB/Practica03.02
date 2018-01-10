@@ -4,17 +4,24 @@ import Clases.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Principal1 {
 
     public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        
         Map<Integer,String>mapa=new HashMap<>();
         Diccionario dic=new Diccionario(mapa);
         
-        dic.agregarElemento(1, "Stalin Figueroa");
-        dic.agregarElemento(2, "Paul Carrasco");
-        dic.agregarElemento(2, "David Cornejo");
-        dic.agregarElemento(2, "Fransua Cordovez");
+        System.out.println("Cuantos elementos desea ingresar?");
+        int elem = leer.nextInt();
+        
+        for(int i = 0; i<elem; i++){
+            System.out.println("Agregar elemento " + (i+1));
+            leer.nextLine();
+            dic.agregarElemento(i+1, leer.next());    
+        }
         
         Object elemento=dic.recuperarElemento(1);
         System.out.println(elemento);
