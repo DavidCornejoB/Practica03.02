@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import practica03_02.modelo.Casa;
 import practica03_02.modelo.Persona;
 
@@ -19,29 +20,40 @@ public class Principal1 {
         Diccionario dic=new Diccionario(mapa);
         Lista listaLib=new Lista(lista);
         Persona p=new Persona();
+        Casa c=new Casa();
+        int op;
         System.out.println("***Ingresar");
         System.out.println("Cuantos elementos desea ingresar?");
         int elem = leer.nextInt();
-        for(int i = 0; i<elem; i++){
-            System.out.println("Nombre de la persona");
-            String nombre=leer.next();
-            
-            System.out.println("Codigo generado");
-            int codPersona=i+1;
-            System.out.println("Nombre de la casa");
-            String casa=leer.next();
-            int codCasa=i+1;
-        }
-        int op;
+        leer.nextLine();
         
-        System.out.println("*** Codigo de la persona a recuperar");
-        op=leer.nextInt();
+        for(int i = 0; i<elem; i++){
+            
+            System.out.println("Nombre de la persona");
+            String nombre=leer.next();            
+            int codPersona=i+1;
+            JOptionPane.showMessageDialog(null,"ID Propietario Generada","Codigo Propietario",JOptionPane.INFORMATION_MESSAGE);
+            p.setId(codPersona);
+            p.setNomApe(nombre);
+           
+            System.out.println("Nombre de la casa de: "+nombre);
+            String NomCasa=leer.next();
+            int codCasa=i+1;
+            JOptionPane.showMessageDialog(null,"ID Casa Generada","Codigo Casa",JOptionPane.INFORMATION_MESSAGE);
+            c.setId(codCasa);
+            c.setNombre(NomCasa);
+            p.setCasa(c);
+            
+            dic.agregarElemento(codPersona, p.getNomApe());
+            listaLib.agregarElemento(c.getNombre());
+        }
+       
+        op=Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Eliminar",JOptionPane.NO_OPTION));
         Object elemento=dic.recuperarElemento(op);
         System.out.println(elemento);
-        System.out.println("***Codigo de la persona a eliminar");
-        op=leer.nextInt();
+        op=Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Eliminar",JOptionPane.NO_OPTION));
         dic.eliminarElemento(op);
-        System.out.println("***Listado de las personas ingresadas");
+        System.out.println("***Listado de las propietarios ingresados");
         List lista1=dic.recuperarElementos();
         for(int i=0;i<lista1.size();i++){
             System.out.println(lista1.get(i));

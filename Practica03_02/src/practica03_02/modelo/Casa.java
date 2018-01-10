@@ -9,6 +9,10 @@ public class Casa {
         this.nombre = nombre;
     }
 
+    public Casa() {
+        
+    }
+    
     public int getId() {
         return id;
     }

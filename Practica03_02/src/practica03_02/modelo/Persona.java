@@ -11,6 +11,10 @@ public class Persona {
         this.casa = casa;
     }
 
+    public Persona() {
+        
+    }
+    
     public int getId() {
         return id;
     }
