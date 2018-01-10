@@ -28,14 +28,14 @@ public class Principal1 {
         for (int i = 0; i < elem; i++) {
 
             System.out.println("Nombre del propietario");
-            String nombre = leer.next();
+            String nombre = leer.nextLine();
             int codPersona = i + 1;
             JOptionPane.showMessageDialog(null, "ID Propietario " + nombre + " Generada: " + codPersona, "Codigo Propietario", JOptionPane.INFORMATION_MESSAGE);
             p.setId(codPersona);
             p.setNomApe(nombre);
 
             System.out.println("Nombre de la casa de: " + nombre);
-            String NomCasa = leer.next();
+            String NomCasa = leer.nextLine();
             int codCasa = i + 1;
             JOptionPane.showMessageDialog(null, "ID Casa " + NomCasa + " Generada: " + codCasa, "Codigo Casa", JOptionPane.INFORMATION_MESSAGE);
             c.setId(codCasa);
