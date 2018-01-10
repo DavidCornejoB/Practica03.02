@@ -37,7 +37,8 @@ public class Principal1 {
             p.setNombre(nom);
             p.setApellido(ape);
 
-            String NomCasa = JOptionPane.showInputDialog(null, "Nombre de la casa de: " + nombre, "Casa", JOptionPane.NO_OPTION);
+            System.out.println("Nombre de la casa de: " + nombre);
+            String NomCasa = leer.nextLine();
             int codCasa = i + 1;
             JOptionPane.showMessageDialog(null, "ID Casa " + NomCasa + " Generada: " + codCasa, "Codigo Casa", JOptionPane.INFORMATION_MESSAGE);
             c.setId(codCasa);
