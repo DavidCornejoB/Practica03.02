@@ -19,17 +19,27 @@ public class Principal1 {
         Lista listaLib = new Lista(lista);
         Persona p = new Persona();
         Casa c = new Casa();
-        int op, opCasa, elem;
-        elem = Integer.parseInt(JOptionPane.showInputDialog(null, "Cuantos elementos desea ingresar", "Ingreso", JOptionPane.NO_OPTION));
-
+        int op, opCasa, elem = 0;
+        boolean cent;
+        
+        do {
+            try {
+                cent = true;
+                elem = Integer.parseInt(JOptionPane.showInputDialog(null, "Cuantos elementos desea ingresar", "Ingreso", JOptionPane.NO_OPTION));
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingresar solo numeros", "Error", JOptionPane.ERROR_MESSAGE);
+                cent = false;
+            }
+        } while (cent == false);
         for (int i = 0; i < elem; i++) {
-                
+
             String nombre = JOptionPane.showInputDialog(null, "Nombre del propietario", "Propietario", JOptionPane.NO_OPTION), nom = null, ape = null;
             int codPersona = i + 1;
-            
-            for(int j = 0; j < nombre.length(); j++){
-                if(nombre.charAt(j) == 32){
-                    nom = nombre.substring(0, j); ape = nombre.substring(j+1, nombre.length());
+
+            for (int j = 0; j < nombre.length(); j++) {
+                if (nombre.charAt(j) == 32) {
+                    nom = nombre.substring(0, j);
+                    ape = nombre.substring(j + 1, nombre.length());
                 }
             }
             JOptionPane.showMessageDialog(null, "ID Propietario " + nombre + " Generada: " + codPersona, "Codigo Propietario", JOptionPane.INFORMATION_MESSAGE);
@@ -37,8 +47,7 @@ public class Principal1 {
             p.setNombre(nom);
             p.setApellido(ape);
 
-            System.out.println("Nombre de la casa de: " + nombre);
-            String NomCasa = leer.nextLine();
+            String NomCasa = JOptionPane.showInputDialog(null, "Nombre de la casa de: " + nombre, "Propietario", JOptionPane.NO_OPTION);
             int codCasa = i + 1;
             JOptionPane.showMessageDialog(null, "ID Casa " + NomCasa + " Generada: " + codCasa, "Codigo Casa", JOptionPane.INFORMATION_MESSAGE);
             c.setId(codCasa);
@@ -50,8 +59,8 @@ public class Principal1 {
         }
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Recuperar", JOptionPane.NO_OPTION));
         Object elemento = dic.recuperarElemento(op);
-        System.out.println("Recuperado "+elemento);
-        
+        System.out.println("Recuperado " + elemento);
+
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Eliminar", JOptionPane.NO_OPTION));
         dic.eliminarElemento(op);
         listaLib.eliminarElemento(op-1);
@@ -62,12 +71,12 @@ public class Principal1 {
         }
 
         opCasa = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo de la casa", "Recuperar", JOptionPane.NO_OPTION));
-        Object elemento1 = listaLib.recuperarElemento(opCasa-1);
-        System.out.println("Recuperado "+elemento1);
+        Object elemento1 = listaLib.recuperarElemento(opCasa - 1);
+        System.out.println("Recuperado " + elemento1);
         opCasa = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo de la casa", "Eliminar", JOptionPane.NO_OPTION));
-        listaLib.eliminarElemento(opCasa-1);
+        listaLib.eliminarElemento(opCasa - 1);
         //Listar casas
-        for(int j=0;j<lista.size();j++){
+        for (int j = 0; j < lista.size(); j++) {
             System.out.println(lista.get(j));
         }
     }
