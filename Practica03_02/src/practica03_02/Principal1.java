@@ -30,14 +30,14 @@ public class Principal1 {
             System.out.println("Nombre del propietario");
             String nombre = leer.next();
             int codPersona = i + 1;
-            JOptionPane.showMessageDialog(null, "ID Propietario Generada", "Codigo Propietario", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ID Propietario " + nombre + " Generada: " + codPersona, "Codigo Propietario", JOptionPane.INFORMATION_MESSAGE);
             p.setId(codPersona);
             p.setNomApe(nombre);
 
             System.out.println("Nombre de la casa de: " + nombre);
             String NomCasa = leer.next();
             int codCasa = i + 1;
-            JOptionPane.showMessageDialog(null, "ID Casa Generada", "Codigo Casa", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ID Casa " + NomCasa + " Generada: " + codCasa, "Codigo Casa", JOptionPane.INFORMATION_MESSAGE);
             c.setId(codCasa);
             c.setNombre(NomCasa);
             p.setCasa(c);
@@ -48,6 +48,7 @@ public class Principal1 {
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Recuperar", JOptionPane.NO_OPTION));
         Object elemento = dic.recuperarElemento(op);
         System.out.println("Recuperado "+elemento);
+        
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Eliminar", JOptionPane.NO_OPTION));
         dic.eliminarElemento(op);
         listaLib.eliminarElemento(op-1);
