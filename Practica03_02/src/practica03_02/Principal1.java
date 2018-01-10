@@ -6,22 +6,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import practica03_02.controlador.GestionDato;
 import practica03_02.modelo.Casa;
 import practica03_02.modelo.Persona;
 
 public class Principal1 {
 
     public static void main(String[] args) {
-        
+
         Map<Integer, Persona> mapa = new HashMap<>();
         ArrayList<Casa> lista = new ArrayList<>();
         Diccionario dic = new Diccionario(mapa);
         Lista listaLib = new Lista(lista);
+        GestionDato gd = new GestionDato();
         Persona p = new Persona();
         Casa c = new Casa();
         int op, opCasa, elem = 0;
         boolean cent;
-        
+
         do {
             try {
                 cent = true;
@@ -31,6 +33,8 @@ public class Principal1 {
                 cent = false;
             }
         } while (cent == false);
+        int arreglo[] = new int[elem];
+        int arregloOrdenado[] = new int[elem];
         for (int i = 0; i < elem; i++) {
 
             String nombre = JOptionPane.showInputDialog(null, "Nombre del propietario", "Propietario", JOptionPane.NO_OPTION), nom = null, ape = null;
@@ -53,17 +57,26 @@ public class Principal1 {
             c.setId(codCasa);
             c.setNombre(NomCasa);
             p.setCasa(c);
-
+            arreglo[i] = codPersona;
             dic.agregarElemento(codPersona, p.getNombre() + " " + p.getApellido());
             listaLib.agregarElemento(c.getNombre());
         }
+        
+        System.out.println("*** Ordenamiento del Diccionario por Burbuja ***");
+        arregloOrdenado = gd.ordenarBurbuja(arreglo, elem);
+        for(int i = 0; i < arregloOrdenado.length; i++){
+            System.out.println(arregloOrdenado[i] + " " + dic.recuperarElemento(arregloOrdenado[i]));
+        }
+
+        
+
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Recuperar", JOptionPane.NO_OPTION));
         Object elemento = dic.recuperarElemento(op);
         System.out.println("Recuperado " + elemento);
 
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Eliminar", JOptionPane.NO_OPTION));
         dic.eliminarElemento(op);
-        listaLib.eliminarElemento(op-1);
+        listaLib.eliminarElemento(op - 1);
         System.out.println("***Listado de las propietarios ingresados");
         List lista1 = dic.recuperarElementos();
         for (int i = 0; i < lista1.size(); i++) {
@@ -79,6 +92,7 @@ public class Principal1 {
         for (int j = 0; j < lista.size(); j++) {
             System.out.println(lista.get(j));
         }
+
     }
 
 }
