@@ -13,6 +13,8 @@ import Clases.Lista;
  */
 public class GestionDato {
 
+    boolean cent = false;
+
     public int[] ordenarBurbuja(int[] arreglo, int elem) {
 
         int[] retorno = new int[elem];
@@ -31,6 +33,44 @@ public class GestionDato {
         }
         return retorno;
 
+    }
+
+    public int[] ordenarQuicksort(int A[], int izq, int der) {
+
+        int pivote = A[izq];
+        int i = izq;
+        int j = der;
+        int aux;
+
+        while (i < j) {
+            while (A[i] <= pivote && i < j) {
+                i++;
+            }
+            while (A[j] > pivote) {
+                j--;
+            }
+            if (i < j) {
+                aux = A[i];
+                A[i] = A[j];
+                A[j] = aux;
+            }
+        }
+        A[izq] = A[j];
+        A[j] = pivote;
+        if (izq < j - 1) {
+            ordenarQuicksort(A, izq, j - 1);
+            cent = false;
+        }
+        if (j + 1 < der) {
+            ordenarQuicksort(A, j + 1, der);
+            cent = true;
+        }
+
+        if (cent = true) {
+            return A;
+        } else {
+            return null;
+        }
     }
 
 }

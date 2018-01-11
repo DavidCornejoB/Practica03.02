@@ -34,7 +34,9 @@ public class Principal1 {
             }
         } while (cent == false);
         int arreglo[] = new int[elem];
+        int arreglo2[] = new int[elem];
         int arregloOrdenado[] = new int[elem];
+        int arregloOrdenado2[] = new int[elem];
         for (int i = 0; i < elem; i++) {
 
             String nombre = JOptionPane.showInputDialog(null, "Nombre del propietario", "Propietario", JOptionPane.NO_OPTION), nom = null, ape = null;
@@ -58,6 +60,7 @@ public class Principal1 {
             c.setNombre(NomCasa);
             p.setCasa(c);
             arreglo[i] = codPersona;
+            arreglo2[i] = codCasa;
             dic.agregarElemento(codPersona, p.getNombre() + " " + p.getApellido());
             listaLib.agregarElemento(c.getNombre());
         }
@@ -66,6 +69,14 @@ public class Principal1 {
         arregloOrdenado = gd.ordenarBurbuja(arreglo, elem);
         for(int i = 0; i < arregloOrdenado.length; i++){
             System.out.println(arregloOrdenado[i] + " " + dic.recuperarElemento(arregloOrdenado[i]));
+        }
+        
+        System.out.println("*** Ordenamiento de la Lista por QuickSort ***");
+        arregloOrdenado2 = gd.ordenarQuicksort(arreglo2, 0, elem-1);
+        for(int i = 0; i < arreglo2.length; i++){
+            Object element = listaLib.recuperarElemento(arregloOrdenado2[i]-1);
+            System.out.println((i+1) + " " + element);
+            
         }
 
         
