@@ -78,9 +78,7 @@ public class Principal1 {
             System.out.println((i+1) + " " + element);
             
         }
-
         
-
         op = Integer.parseInt(JOptionPane.showInputDialog(null, "Codigo del propietario", "Recuperar", JOptionPane.NO_OPTION));
         Object elemento = dic.recuperarElemento(op);
         System.out.println("Recuperado " + elemento);
