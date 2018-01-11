@@ -48,6 +48,7 @@ public class Principal1 {
                     ape = nombre.substring(j + 1, nombre.length());
                 }
             }
+            String nombrePasa=nombre;
             JOptionPane.showMessageDialog(null, "ID Propietario " + nombre + " Generada: " + codPersona, "Codigo Propietario", JOptionPane.INFORMATION_MESSAGE);
             p.setId(codPersona);
             p.setNombre(nom);
@@ -61,7 +62,7 @@ public class Principal1 {
             p.setCasa(c);
             arreglo[i] = codPersona;
             arreglo2[i] = codCasa;
-            dic.agregarElemento(codPersona, p.getNombre() + " " + p.getApellido());
+            dic.agregarElemento(codPersona,nombrePasa);
             listaLib.agregarElemento(c.getNombre());
         }
         
